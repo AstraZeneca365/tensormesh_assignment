@@ -7,11 +7,8 @@ question 1 - What happens when both requests arrive at the same time in each ver
           1)in fixed priority arbiter - only the data of the highest priority requester gets sent to out_data.
           2)in round robin arbiter - the arbiter remembers which requester was granted last and depending on that it grants to one of the requesters
             (if A was granted last then B is granted now and vice versa)
-          | Cycle | Fixed Priority Grant | Round-Robin Grant |
-                  |---:|---|---|
-                  | 1 | A | A |
-                  | 2 | A | B |
-                  | 3 | A | A |
-                  | 4 | A | B |
-                  | 5 | A | A |
-                  | 6 | A | B |
+
+question 2 - What is the problem with always giving A priority?
+          B never gets granted (starvation of B)
+
+question 3 -version 2 remembers which module was granted last and gives priority to the module which was not granted last. Therefore, if both A and B continuously request               access, they get alternate grants. The longest B can wait is two cycles.
